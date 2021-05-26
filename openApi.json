@@ -24,6 +24,9 @@
             "name": "Storefront"
         },
         {
+            "name": "Account"
+        },
+        {
             "name": "Catalog"
         },
         {
@@ -703,6 +706,276 @@
                                             "OwnerId": "00550000000vtlpAAA",
                                             "Id": "a5n23000000A7xGAAS"
                                         }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/accounts/default": {
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get Default Account",
+                "description": "The following request will return the  account associated with the current user. For guest user it retrieves the account associated with the storefront object",
+                "operationId": "GetDefaultAccount",
+                "parameters": [
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "The name of the storefront being used for the request.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Account"
+                                },
+                                "example": {
+                                    "title": "success",
+                                    "status": 200,
+                                    "data": {
+                                        "PriceList": {
+                                            "APTS_Ext_ID": "a171T000005il1XQAQ",
+                                            "DisableBasedOnCurrencyAdjustment": false,
+                                            "Type": "Standard",
+                                            "GuidePage": "APTPSGuidedSelling",
+                                            "EffectiveDate": "2018-10-31T08:22:00.000Z",
+                                            "Active": true,
+                                            "SystemModstamp": "2021-03-24T11:38:23.000Z",
+                                            "LastModifiedById": "00550000000vtlpAAA",
+                                            "LastModifiedDate": "2021-03-24T11:38:23.000Z",
+                                            "CreatedById": "00550000000vtlpAAA",
+                                            "CreatedDate": "2019-05-08T11:14:39.000Z",
+                                            "CurrencyIsoCode": "USD",
+                                            "Name": "Tier 1 Hardware & Software",
+                                            "IsDeleted": false,
+                                            "OwnerId": "00550000000vtlpAAA",
+                                            "Id": "a171T000005il1XQAQ"
+                                        },
+                                        "ReadyForInvoiceDate": "2019-10-15",
+                                        "ExcludeFromDunning": false,
+                                        "CustomerPriority": "High",
+                                        "PriceListId": "a171T000005il1XQAQ",
+                                        "BillingPreferenceId": "a2d19000001VUE4AAO",
+                                        "BillingDayOfMonth": "1st of the Month",
+                                        "TaxExempt": "No",
+                                        "CertificateId": "a2s19000000RGuGAAW",
+                                        "IsCustomerPortal": true,
+                                        "IsPartner": true,
+                                        "LastActivityDate": "2021-04-08",
+                                        "SystemModstamp": "2021-04-08T07:04:58.000Z",
+                                        "LastModifiedById": "00550000000vtlpAAA",
+                                        "LastModifiedDate": "2021-04-06T10:26:56.000Z",
+                                        "CreatedById": "00550000000vtlpAAA",
+                                        "CreatedDate": "2019-05-09T08:17:08.000Z",
+                                        "OwnerId": "00550000000vtlpAAA",
+                                        "CurrencyIsoCode": "USD",
+                                        "Industry": "Other",
+                                        "Fax": "(211) 555-5556",
+                                        "Phone": "(211) 555-5555",
+                                        "ShippingAddress": {
+                                            "city": "Bangalore",
+                                            "country": "India",
+                                            "countryCode": "IN",
+                                            "geocodeAccuracy": null,
+                                            "latitude": null,
+                                            "longitude": null,
+                                            "postalCode": "560103",
+                                            "state": "Karnataka",
+                                            "stateCode": "KA",
+                                            "street": "14 Dry Island #111"
+                                        },
+                                        "ShippingCountryCode": "IN",
+                                        "ShippingStateCode": "KA",
+                                        "ShippingCountry": "India",
+                                        "ShippingPostalCode": "560103",
+                                        "ShippingState": "Karnataka",
+                                        "ShippingCity": "Bangalore",
+                                        "ShippingStreet": "14 Dry Island #111",
+                                        "BillingAddress": {
+                                            "city": "San Mateo",
+                                            "country": "United States",
+                                            "countryCode": "US",
+                                            "geocodeAccuracy": null,
+                                            "latitude": null,
+                                            "longitude": null,
+                                            "postalCode": "84321",
+                                            "state": "Utah",
+                                            "stateCode": "UT",
+                                            "street": "1400 Fashion Island Blvd #100"
+                                        },
+                                        "BillingCountryCode": "US",
+                                        "BillingStateCode": "UT",
+                                        "BillingCountry": "United States",
+                                        "BillingPostalCode": "84321",
+                                        "BillingState": "Utah",
+                                        "BillingCity": "San Mateo",
+                                        "BillingStreet": "1400 Fashion Island Blvd #100",
+                                        "Name": "ABC Corporation",
+                                        "IsDeleted": false,
+                                        "Id": "0011900000hnGsrAAE"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/accounts/active": {
+            "get": {
+                "tags": [
+                    "Account"
+                ],
+                "summary": "Get Active Account",
+                "description": "The following request will return the current active account",
+                "operationId": "GetActiveAccount",
+                "parameters": [
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "The name of the storefront being used for the request.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "explode": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Account"
+                                },
+                                "example": {
+                                    "title": "success",
+                                    "status": 200,
+                                    "data": {
+                                        "PriceList": {
+                                            "APTS_Ext_ID": "a171T000005il1XQAQ",
+                                            "DisableBasedOnCurrencyAdjustment": false,
+                                            "Type": "Standard",
+                                            "GuidePage": "APTPSGuidedSelling",
+                                            "EffectiveDate": "2018-10-31T08:22:00.000Z",
+                                            "Active": true,
+                                            "SystemModstamp": "2021-03-24T11:38:23.000Z",
+                                            "LastModifiedById": "00550000000vtlpAAA",
+                                            "LastModifiedDate": "2021-03-24T11:38:23.000Z",
+                                            "CreatedById": "00550000000vtlpAAA",
+                                            "CreatedDate": "2019-05-08T11:14:39.000Z",
+                                            "CurrencyIsoCode": "USD",
+                                            "Name": "Tier 1 Hardware & Software",
+                                            "IsDeleted": false,
+                                            "OwnerId": "00550000000vtlpAAA",
+                                            "Id": "a171T000005il1XQAQ"
+                                        },
+                                        "ReadyForInvoiceDate": "2019-10-15",
+                                        "ExcludeFromDunning": false,
+                                        "CustomerPriority": "High",
+                                        "PriceListId": "a171T000005il1XQAQ",
+                                        "BillingPreferenceId": "a2d19000001VUE4AAO",
+                                        "BillingDayOfMonth": "1st of the Month",
+                                        "TaxExempt": "No",
+                                        "CertificateId": "a2s19000000RGuGAAW",
+                                        "IsCustomerPortal": true,
+                                        "IsPartner": true,
+                                        "LastActivityDate": "2021-04-08",
+                                        "SystemModstamp": "2021-04-08T07:04:58.000Z",
+                                        "LastModifiedById": "00550000000vtlpAAA",
+                                        "LastModifiedDate": "2021-04-06T10:26:56.000Z",
+                                        "CreatedById": "00550000000vtlpAAA",
+                                        "CreatedDate": "2019-05-09T08:17:08.000Z",
+                                        "OwnerId": "00550000000vtlpAAA",
+                                        "CurrencyIsoCode": "USD",
+                                        "Industry": "Other",
+                                        "Fax": "(211) 555-5556",
+                                        "Phone": "(211) 555-5555",
+                                        "ShippingAddress": {
+                                            "city": "Bangalore",
+                                            "country": "India",
+                                            "countryCode": "IN",
+                                            "geocodeAccuracy": null,
+                                            "latitude": null,
+                                            "longitude": null,
+                                            "postalCode": "560103",
+                                            "state": "Karnataka",
+                                            "stateCode": "KA",
+                                            "street": "14 Dry Island #111"
+                                        },
+                                        "ShippingCountryCode": "IN",
+                                        "ShippingStateCode": "KA",
+                                        "ShippingCountry": "India",
+                                        "ShippingPostalCode": "560103",
+                                        "ShippingState": "Karnataka",
+                                        "ShippingCity": "Bangalore",
+                                        "ShippingStreet": "14 Dry Island #111",
+                                        "BillingAddress": {
+                                            "city": "San Mateo",
+                                            "country": "United States",
+                                            "countryCode": "US",
+                                            "geocodeAccuracy": null,
+                                            "latitude": null,
+                                            "longitude": null,
+                                            "postalCode": "84321",
+                                            "state": "Utah",
+                                            "stateCode": "UT",
+                                            "street": "1400 Fashion Island Blvd #100"
+                                        },
+                                        "BillingCountryCode": "US",
+                                        "BillingStateCode": "UT",
+                                        "BillingCountry": "United States",
+                                        "BillingPostalCode": "84321",
+                                        "BillingState": "Utah",
+                                        "BillingCity": "San Mateo",
+                                        "BillingStreet": "1400 Fashion Island Blvd #100",
+                                        "Name": "ABC Corporation",
+                                        "IsDeleted": false,
+                                        "Id": "0011900000hnGsrAAE"
                                     }
                                 }
                             }
@@ -26266,6 +26539,81 @@
                     "title": "success",
                     "status": 200,
                     "data": {}
+                }
+            },
+            "Account": {
+                "title": "Account",
+                "type": "object",
+                "properties": {
+                    "PriceList": {
+                        "type": "object",
+                        "properties": {
+                            "Id": {
+                                "type": "string"
+                            },
+                            "Name": {
+                                "type": "string"
+                            },
+                            "Active": {
+                                "type": "boolean"
+                            },
+                            "PriceListId": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "PriceListId": {
+                        "type": "string"
+                    },
+                    "BillingPreferenceId": {
+                        "type": "string"
+                    },
+                    "TaxExempt": {
+                        "type": "boolean"
+                    },
+                    "ShippingAddress": {
+                        "type": "object",
+                        "properties": {
+                            "city": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "countryCode": {
+                                "type": "boolean"
+                            },
+                            "postalCode": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "CurrencyIsoCode": {
+                        "type": "string"
+                    },
+                    "BillingAddress": {
+                        "type": "object",
+                        "properties": {
+                            "city": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "countryCode": {
+                                "type": "boolean"
+                            },
+                            "postalCode": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "Id": {
+                        "type": "string"
+                    },
+                    "Name": {
+                        "type": "string"
+                    }
                 }
             }
         },
