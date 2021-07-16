@@ -13307,9 +13307,33 @@
                 "operationId": "UpdateCart",
                 "parameters": [
                     {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    {
                         "name": "price",
                         "in": "query",
                         "description": "The pricing strategy to use. 'default' | 'async' | 'skip'",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "skip"
+                        }
+                    },
+                    {
+                        "name": "rule",
+                        "in": "query",
+                        "description": "The rule strategy to use. 'default' | 'async' | 'skip'",
                         "required": true,
                         "style": "form",
                         "explode": true,
