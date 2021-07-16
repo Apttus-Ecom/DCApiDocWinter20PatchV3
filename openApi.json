@@ -12492,8 +12492,8 @@
                         "required": false,
                         "style": "form",
                         "schema": {
-                            "type": "string",
-                            "example": "<string>"
+                            "type": "boolean",
+                            "example": "true"
                         }
                     },
                     {
@@ -12503,8 +12503,8 @@
                         "required": false,
                         "style": "form",
                         "schema": {
-                            "type": "string",
-                            "example": "<string>"
+                            "type": "boolean",
+                            "example": "true"
                         }
                     },
                     {
@@ -12762,8 +12762,8 @@
                         "required": false,
                         "style": "form",
                         "schema": {
-                            "type": "string",
-                            "example": "<string>"
+                            "type": "boolean",
+                            "example": "true"
                         }
                     },
                     {
@@ -12773,8 +12773,8 @@
                         "required": false,
                         "style": "form",
                         "schema": {
-                            "type": "string",
-                            "example": "<string>"
+                            "type": "boolean",
+                            "example": "true"
                         }
                     },
                     {
@@ -13226,13 +13226,13 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "explode": false,
                         "schema": {
                             "type": "string",
-                            "example": "a1I3I000000e7GLUAY"
+                            "example": "active"
                         }
                     },
                     {
@@ -13770,7 +13770,7 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "explode": false,
@@ -13898,6 +13898,18 @@
                 "operationId": "CreateCart",
                 "parameters": [
                     {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": "false"
+                        }
+                    },
+                    {
                         "name": "x-storefront",
                         "in": "header",
                         "description": "The name of the storefront being used for the request.",
@@ -14018,7 +14030,7 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "schema": {
@@ -14074,7 +14086,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GenericSuccessResponse"
+                                    "$ref": "#/components/schemas/SuccessResponse"
                                 },
                                 "example": {
                                     "title": "success",
@@ -14112,7 +14124,7 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "schema": {
@@ -14150,7 +14162,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GenericSuccessResponse"
+                                    "$ref": "#/components/schemas/SuccessResponse"
                                 },
                                 "example": {
                                     "title": "success",
@@ -14186,9 +14198,33 @@
                         }
                     },
                     {
+                        "name": "lineNumbers",
+                        "in": "query",
+                        "description": "This query parameter is used to pass the line number(s) to return only associated lineitems after pricing. Do not pass the lineNumber in the following cases \n\n1. *All the line items need to be retrieved.*  \n\n2. *One line item having dependent pricing change on unrelated line items in the cart.*  \n\nFor use cases like Related Pricing, all the related line items or the entire cart must be passed for the correct pricing results. If all related lines in the cart are not passed pricing may not be accurate.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "2,3"
+                        }
+                    },
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": "false"
+                        }
+                    },
+                    {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart.",
+                        "description": "The reference Id of the cart or 'active' for the current active cart.",
                         "required": true,
                         "style": "simple",
                         "schema": {
@@ -14519,6 +14555,18 @@
                 "description": "The options post endpoint can be used to add options to an existing cart item.",
                 "operationId": "AddOptiontoBundle",
                 "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": "false"
+                        }
+                    },
                     {
                         "name": "price",
                         "in": "query",
@@ -14880,6 +14928,18 @@
                 "description": "The cart items post endpoint can be used to add new line items to an existing cart. This is the most common type of cart action.\nA successful post will return the rules and line items associated with the added product.\n\nMultiple line items may be returned if the product added is associated with a bundle.\n\nPricing for the added product is calculated as an asynchronous process after the product is added and may not be immediatley available on the line item. While pricing is being calculated, the 'IsPricePending' field on the cart will be 'true'.",
                 "operationId": "AddProducttoCart",
                 "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": "false"
+                        }
+                    },
                     {
                         "name": "price",
                         "in": "query",
@@ -15395,7 +15455,7 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "explode": false,
@@ -16338,7 +16398,7 @@
                     {
                         "name": "cartId",
                         "in": "path",
-                        "description": "The reference to the cart or 'active' for the current active cart",
+                        "description": "The reference Id of the cart or 'active' for the current active cart",
                         "required": true,
                         "style": "simple",
                         "explode": false,
@@ -21286,6 +21346,7 @@
                                     }
                                 },
                                 "example": {
+                                    "alias": false,
                                     "expressionOperator": "AND",
                                     "view": "detail",
                                     "parentKeys": [],
@@ -21683,6 +21744,18 @@
                 "description": "Records of any type can be created with the generic create record endpoint. The type of record to be created will match the 'object' path variable. The data for the record or multiple records must be passed into the body of the request.\n\n> Request body can be a single record or an array of records to be created.",
                 "operationId": "CreateRecord(s)",
                 "parameters": [
+                    {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": "false"
+                        }
+                    },
                     {
                         "name": "object",
                         "in": "path",
@@ -23603,6 +23676,18 @@
                 "operationId": "UpsertRecord(s)",
                 "parameters": [
                     {
+                        "name": "alias",
+                        "in": "query",
+                        "description": "The namespace for the fields will be prefixed if set to false. By default it is true.",
+                        "required": false,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    {
                         "name": "object",
                         "in": "path",
                         "description": "Name of the object you want to take an action on.",
@@ -24380,7 +24465,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GenericSuccessResponse"
+                                    "$ref": "#/components/schemas/SuccessResponse"
                                 },
                                 "example": {
                                     "title": "success",
@@ -24433,7 +24518,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/GenericSuccessResponse"
+                                    "$ref": "#/components/schemas/SuccessResponse"
                                 },
                                 "example": {
                                     "title": "success",
@@ -25433,7 +25518,7 @@
                             "example": {
                                 "ProductAttributeValues": [
                                     {
-                                        "AssetId": null,
+                                        "AssetId": "a0e3I000000ERLmQAO",
                                         "AttributeValueExt3SO": {
                                             "attributes": {
                                                 "type": "Apttus_Config2__ProductAttributeValueExt3__c"
@@ -25520,7 +25605,8 @@
                                             "type": "Apttus_Config2__LineItem__c"
                                         },
                                         "Apttus_Config2__Quantity__c": 3,
-                                        "LineItemCustomField__C": "value"
+                                        "LineItemCustomField__C": "value",
+                                        "Apttus_Config2__AssetLineItemId__c": "a0e3I000000ERLmQAO"
                                     }
                                 ]
                             }
@@ -26434,8 +26520,8 @@
                     }
                 }
             },
-            "GenericSuccessResponse": {
-                "title": "GenericSuccessResponse",
+            "SuccessResponse": {
+                "title": "SuccessResponse",
                 "required": [
                     "data"
                 ],
