@@ -14030,6 +14030,102 @@
                 "deprecated": false
             }
         },
+        "/carts/{cartId}/clone": {
+            "post": {
+                "tags": [
+                    "Carts"
+                ],
+                "summary": "Clone Cart",
+                "description": "Clone Cart API clones the cart along with Line Items, Constraint Rule Info, Collaboration request and other details. It sets the newly created cart to active.",
+                "operationId": "CloneCart",
+                "parameters": [
+                    {
+                        "name": "cartId",
+                        "in": "path",
+                        "description": "The reference Id of the cart that needsto be cloned",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "a1I3I000000zQUqUAM"
+                        }
+                    },
+                    {
+                        "name": "x-storefront",
+                        "in": "header",
+                        "description": "The name of the storefront being used for the request.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "ECommerce"
+                        }
+                    },
+                    {
+                        "name": "Content-Type",
+                        "in": "header",
+                        "description": "Content type of the request body.",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string",
+                            "example": "application/json"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {},
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CreateCart"
+                                },
+                                "example": {
+                                    "title":"success",
+                                    "status":200,
+                                    "data":{
+                                        "UseType":"Main",
+                                        "ParentConfigurationId":"a1I3I000000zQUqUAM",
+                                        "BusinessObjectProfile":"Regular",
+                                        "IsValidationPending":false,
+                                        "IsTaskPending":false,
+                                        "ShipToAccountId":"0013I00000gsIoRQAU",
+                                        "CartDataCache":"{\n  \"usePriceEscalators\" : false,\n  \"useFormulaPricing\" : false,\n  \"useBasicTotaling\" : false,\n  \"splitCartThreshold\" : null,\n  \"splitCartCriteriaFields\" : null,\n  \"priceInErrorLineNumbers\" : null,\n  \"priceCompletedLineNumbers\" : null,\n  \"priceCompletedChunkLineNumbers\" : null,\n  \"pendingDepItemKeys\" : [ ],\n  \"lastIndex\" : 0,\n  \"lastChunkItemSequence\" : null,\n  \"IsProductGroupEnabled\" : false,\n  \"IsProductFamilyEnabled\" : false,\n  \"isPrestoCallPending\" : null,\n  \"isPrePricingStepPending\" : null,\n  \"isPostPricingStepPending\" : null,\n  \"IsOptionPricePending\" : false,\n  \"IsEmpty\" : false,\n  \"IsCustomGroupEnabled\" : false,\n  \"idxCType\" : { },\n  \"DependentItemKeyMap\" : { },\n  \"currAdHocGrouByField\" : null,\n  \"cTypeIdx\" : { },\n  \"couponUsage\" : { },\n  \"couponCodes\" : [ ],\n  \"chunkBundleLineNumber\" : null\n}",
+                                        "BillToAccountId":"0013I00000gsIoRQAU",
+                                        "EffectivePriceListId":"a171T000005il1XQAQ",
+                                        "NumberOfItems":2,
+                                        "BaseRelationCount":0,
+                                        "SummaryGroupType":"Category",
+                                        "Status":"New",
+                                        "PriceListId":"a171T000005il1XQAQ",
+                                        "IsTransient":true,
+                                        "IsPricePending":false,
+                                        "EffectiveDate":"2021-10-08T11:38:41.000Z",
+                                        "BusinessObjectType":"Agreement",
+                                        "AccountId":"0013I00000gsIoRQAU",
+                                        "LastReferencedDate":"2021-10-08T11:38:42.000Z",
+                                        "LastViewedDate":"2021-10-08T11:38:42.000Z",
+                                        "SystemModstamp":"2021-10-08T11:38:42.000Z",
+                                        "LastModifiedById":"00519000002i3WMAAY",
+                                        "LastModifiedDate":"2021-10-08T11:38:42.000Z",
+                                        "CreatedById":"00519000002i3WMAAY",
+                                        "CreatedDate":"2021-10-08T11:38:42.000Z",
+                                        "CurrencyIsoCode":"USD",
+                                        "Name":"CV_02_Cart_Cloned",
+                                        "IsDeleted":false,
+                                        "OwnerId":"00519000002i3WMAAY",
+                                        "Id":"a1I3I000000zvLXUAY"
+                                        }
+                                    }
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
         "/carts/{cartId}/promotions": {
             "post": {
                 "tags": [
