@@ -24702,33 +24702,33 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "NewStartDate": {
+                                    "newStartDate": {
                                         "type": "string"
                                     },
-                                    "ProductIds": {
+                                    "productIds": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
                                         }
                                     },
-                                    "AssetIds": {
+                                    "assetIds": {
                                         "type": "array",
                                         "items": {
                                             "type": "string"
                                         }
                                     },
-                                    "CartIds": {
+                                    "cartId": {
                                         "type": "string"
                                     }
                                 }
                             },
                             "example": {
-                                "CartIds": "a1IW0000001ZeAVMA0",
-                                "NewStartDate": "2020-01-15",
+                                "cartId": "a1IW0000001ZeAVMA0",
+                                "newStartDate": "2020-01-15",
                                 "assetIds": [
                                     "a1IW0000001ZeAVMA0"
                                 ],
-                                "ProductIds": [
+                                "productIds": [
                                     "01t19000005GatQAAS"
                                 ]
                             }
